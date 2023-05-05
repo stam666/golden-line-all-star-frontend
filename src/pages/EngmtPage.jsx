@@ -12,16 +12,15 @@ const EngmtPage = () => {
   useEffect(() => {
     const fetchEngmtList = async () => {
       try {
-        const resAll = {data: []};
-        // const resAll = await axios.get(
-        //   `${Config.BACKEND_URL}/api/v1/restaurants/stats`,
-        //   {
-        //     withCredentials: true,
-        //     headers: {
-        //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-        //     },
-        //   }
-        // );
+        const resAll = await axios.get(
+          `${Config.BACKEND_URL}/api/v1/restaurants/overall-stats`,
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         const resIndiv = await axios.get(
           `${Config.BACKEND_URL}/api/v1/restaurants/stats`,
           {
@@ -31,7 +30,6 @@ const EngmtPage = () => {
             },
           }
         );
-        console.log([...resAll.data, ...resIndiv.data]);
         setEngmtList([...resAll.data, ...resIndiv.data]);
       } catch (error) {
         console.error(error);
