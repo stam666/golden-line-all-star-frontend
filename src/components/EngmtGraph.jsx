@@ -7,13 +7,13 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import {useEffect, useState} from "react";
+import {Line} from "react-chartjs-2";
 
-const EngmtGraph = ({ res }) => {
-  const timeFrameList = ['daily', 'weekly', 'monthly'];
-  const [timeFrame, setTimeFrame] = useState('daily');
+const EngmtGraph = ({res}) => {
+  const timeFrameList = ["daily", "weekly", "monthly"];
+  const [timeFrame, setTimeFrame] = useState("daily");
   const [graphData, setGraphData] = useState({});
 
   ChartJS.register(
@@ -30,7 +30,7 @@ const EngmtGraph = ({ res }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
@@ -51,15 +51,15 @@ const EngmtGraph = ({ res }) => {
   };
 
   useEffect(() => {
-    const { labels, data } = res?.[timeFrame];
+    const {labels, data} = res?.[timeFrame];
     const newGraphData = {
       labels,
       datasets: [
         {
-          label: 'visit count',
+          label: "visit count",
           data,
-          borderColor: 'rgb(255, 99, 132)',
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: "rgb(255, 99, 132)",
+          backgroundColor: "rgba(255, 99, 132, 0.5)",
         },
       ],
     };
