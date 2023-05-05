@@ -11,7 +11,7 @@
       justify-content: space-between;
       h2 {
         font-weight: 600;
-        margin-left: 32px;
+        margin-left: 24px;
       }
     }
     .engmtlist {
@@ -21,6 +21,15 @@
       flex-direction: column;
       overflow: hidden;
       overflow-y: scroll;
+      .sub-header {
+        display: flex;
+        align-items: center;
+        background-color: lightgrey;
+        h3 {
+          font-weight: 600;
+          margin-left: 24px;
+        }
+      }
       .engmt {
         border-bottom: solid 1px var(--arrow-color);
         display: flex;
@@ -29,7 +38,7 @@
         // height: 64px;
         padding: 16px;
         h3 {
-          margin: 0 16px 0 0 ;
+          margin: 0 0 0 24px ;
           overflow: hidden;
           text-overflow: ellipsis;
         }

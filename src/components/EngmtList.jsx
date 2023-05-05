@@ -1,5 +1,4 @@
 const EngmtList = ({ engmtList, engmtSelected, setEngmtSelected }) => {
-
   const handleSelected = (index) => {
     setEngmtSelected(index);
   };
@@ -12,22 +11,34 @@ const EngmtList = ({ engmtList, engmtSelected, setEngmtSelected }) => {
       <div className="engmtlist">
         {engmtList.length > 0 ? (
           <>
+            <div className="sub-header">
+              <h3>- Whole platform</h3>
+            </div>
             {engmtList.map((engmt, index) => {
               const { name } = engmt;
               return (
-                <div
-                  className={`engmt ${index === engmtSelected ? 'selected' : ''}`}
-                  key={name}
-                  id={index}
-                  onClick={() => handleSelected(index)}
-                >
-                  <h3>{name}</h3>
-                </div>
+                <>
+                  {index === 1 && (
+                    <div className="sub-header">
+                     <h3>- Individual</h3>
+                    </div>
+                  )}
+                  <div
+                    className={`engmt ${
+                      index === engmtSelected ? 'selected' : ''
+                    }`}
+                    key={name}
+                    id={index}
+                    onClick={() => handleSelected(index)}
+                  >
+                    <h3>{name}</h3>
+                  </div>
+                </>
               );
             })}
           </>
         ) : (
-          <div className="no-engmt">No Engagement</div>
+          <div className="no-engmt">No restaurants</div>
         )}
       </div>
     </div>

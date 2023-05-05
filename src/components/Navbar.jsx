@@ -19,11 +19,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <img
-        src={require("../assets/images/chat-logo.jpg")}
-        alt="logo"
-        className="logo"
-      />
+      <h1 style={{marginLeft: "32px"}}>Restaurant yum yum</h1>
       <div className="content-container">
         <nav>
           {localStorage.getItem("user_id") ? (
