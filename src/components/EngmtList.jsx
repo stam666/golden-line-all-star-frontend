@@ -1,8 +1,7 @@
 const EngmtList = ({ engmtList, engmtSelected, setEngmtSelected }) => {
 
-  const handleSelected = (event) => {
-    const {id} = event.currentTarget;
-    setEngmtSelected(id);
+  const handleSelected = (index) => {
+    setEngmtSelected(index);
   };
 
   return (
@@ -14,13 +13,13 @@ const EngmtList = ({ engmtList, engmtSelected, setEngmtSelected }) => {
         {engmtList.length > 0 ? (
           <>
             {engmtList.map((engmt, index) => {
-              const { _id, name } = engmt;
+              const { name } = engmt;
               return (
                 <div
-                  className={`chat ${name === engmtSelected ? 'selected' : ''}`}
-                  key={_id}
-                  id={_id}
-                  onClick={handleSelected}
+                  className={`engmt ${index === engmtSelected ? 'selected' : ''}`}
+                  key={name}
+                  id={index}
+                  onClick={() => handleSelected(index)}
                 >
                   <h3>{name}</h3>
                 </div>
@@ -30,13 +29,6 @@ const EngmtList = ({ engmtList, engmtSelected, setEngmtSelected }) => {
         ) : (
           <div className="no-engmt">No Engagement</div>
         )}
-        <div
-          className={`engmt`}
-          id="test"
-          onClick={handleSelected}
-        >
-          <h3>{'Aroi'}</h3>
-        </div>
       </div>
     </div>
   );

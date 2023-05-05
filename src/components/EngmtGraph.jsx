@@ -8,12 +8,13 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
 const EngmtGraph = ({ res }) => {
   const timeFrameList = ['daily', 'weekly', 'monthly'];
   const [timeFrame, setTimeFrame] = useState('daily');
+  const [graphData, setGraphData] = useState({});
 
   ChartJS.register(
     CategoryScale,
@@ -36,37 +37,38 @@ const EngmtGraph = ({ res }) => {
         text: `${timeFrame} engagement`,
       },
     },
-  };
-
-  const mockLabels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-  ];
-
-  const mockData = [65, 59, 80, 81, 56, 55, 40];
-
-  const graphData = {
-    labels: mockLabels,
-    // labels: res[timeFrame].labels,
-    datasets: [
-      {
-        label: 'visit count',
-        data: mockData,
-        // data: res[timeFrame].data,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1,
+        },
+        // gridLines: {
+        //   display: false,
+        // },
       },
-    ],
+    },
   };
+
+  useEffect(() => {
+    const { labels, data } = res?.[timeFrame];
+    const newGraphData = {
+      labels,
+      datasets: [
+        {
+          label: 'visit count',
+          data,
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+      ],
+    };
+    setGraphData(newGraphData);
+  }, [res, timeFrame]);
 
   return (
     <div className="engmtgraph-container">
-      {res.length > 0 ? (
+      {Object.keys(graphData).length > 0 ? (
         <>
           <Line options={options} data={graphData} />
           <div className="timeframe">
