@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import Config from '../assets/configs/configs.json';
-import EngmtList from '../components/EngmtList';
-import EngmtGraph from '../components/EngmtGraph';
-import axios from 'axios';
+import {useEffect, useState} from "react";
+import Config from "../assets/configs/configs.json";
+import EngmtList from "../components/EngmtList";
+import EngmtGraph from "../components/EngmtGraph";
+import axios from "axios";
 
 const EngmtPage = () => {
   const [engmtList, setEngmtList] = useState([]);
@@ -12,16 +12,13 @@ const EngmtPage = () => {
   useEffect(() => {
     const fetchEngmtList = async () => {
       try {
-        // const res = await axios.get(
-        //   `${Config.BACKEND_URL}/user/chatRooms/${userId}`,
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
         const res = await axios.get(
           `${Config.BACKEND_URL}/api/v1/restaurants/stats`,
           {
             withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           }
         );
         console.log(res.data);

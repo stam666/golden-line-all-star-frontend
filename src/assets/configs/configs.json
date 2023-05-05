@@ -1,4 +1,4 @@
 {
-  "JWT_SECRET": "CHITCHAT",
+  "JWT_SECRET": "asdfjkl;;lkjfdsa",
   "BACKEND_URL": "http://localhost:5001"
 }
