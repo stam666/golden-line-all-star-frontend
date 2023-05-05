@@ -43,9 +43,6 @@ const EngmtGraph = ({res}) => {
         ticks: {
           stepSize: 1,
         },
-        // gridLines: {
-        //   display: false,
-        // },
       },
     },
   };

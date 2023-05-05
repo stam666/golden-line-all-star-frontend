@@ -3,13 +3,10 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 
 import Config from "../assets/configs/configs.json";
-import {cookieExists, deleteCookie} from "../utils/cookies";
 
 const Navbar = () => {
   const handleLogout = async () => {
     localStorage.clear();
-    (await cookieExists("username")) && (await deleteCookie("username"));
-    (await cookieExists("userID")) && (await deleteCookie("userID"));
     await axios.get(`${Config.BACKEND_URL}/api/v1/auth/logout`, {
       withCredentials: true,
     });
@@ -37,9 +34,6 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link to="/bot" className="content">
-                Bot Chat
-              </Link>
               <Link to="/" className="content">
                 Sign in
               </Link>
