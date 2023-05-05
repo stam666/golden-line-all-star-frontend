@@ -1,0 +1,52 @@
+.engmtlist-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--contrast-color);
+    border-radius: 4px 0 0 4px;
+    border: solid 1px var(--arrow-color);
+    border-right: 0;
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-weight: 600;
+        margin-left: 32px;
+      }
+    }
+    .engmtlist {
+      border-top: solid 1px var(--arrow-color);
+      flex: auto;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      overflow-y: scroll;
+      .engmt {
+        border-bottom: solid 1px var(--arrow-color);
+        display: flex;
+        justify-content: space-between;
+        gap: 4px;
+        // height: 64px;
+        padding: 16px;
+        h3 {
+          margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        &.selected {
+          background-color: var(--secondary-background);
+        }
+        &:hover {
+          h3 {
+            font-weight: 600;
+          }
+        }
+      }
+      .no-engmt {
+        display: flex;
+        margin-top: 16px;
+        margin-left: 32px;
+        color: var(--p-color);
+      }
+    }
+  }

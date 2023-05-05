@@ -1,0 +1,11 @@
+.engmtgraph-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+  .timeframe {
+    display: flex;
+    gap: 16px;
+  }
+//   background-color: var(--contrast-color);
+}
